@@ -20,8 +20,8 @@ ENV NODE_EXPORTER_PORT=9100
 ENV CADVISOR_HOST=cadvisor
 ENV CADVISOR_PORT=8080
 
-COPY prometheus_config.sh /bin/
+COPY entrypoints.sh /bin/
 COPY --from=builder /build/registerd /bin/
 
 CMD ["/bin/sh", "/bin/registerd"]
-ENTRYPOINT ["/bin/sh","/bin/prometheus_config.sh"]
+CMD ["/bin/sh","/bin/entrypoints.sh"]
