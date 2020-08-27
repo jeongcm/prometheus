@@ -5,7 +5,7 @@ COPY common .
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o registerd cmd/registerd/registerd.go
 
-ENV CDM_SERVICE_NAME cdm-cloud-prometheus
+ENV CDM_SERVICE_NAME=cdm-cloud-prometheus
 ENV CDM_SERIVCE_ADVERTISE_PORT=9090
 ENV CDM_SERVICE_VERSION=2.20.1
 
@@ -21,7 +21,7 @@ ENV CADVISOR_HOST=cadvisor
 ENV CADVISOR_PORT=8080
 
 COPY prometheus_config.sh /bin/
-COPY --from=builder /build/registerd /bin
+COPY --from=builder /build/registerd /bin/
 
-CMD ["/bin/sh", "./registerd"]
-ENTRYPOINT ["/bin/sh","./prometheus_config.sh"]
+CMD ["/bin/sh", "/bin/registerd"]
+ENTRYPOINT ["/bin/sh","/bin/prometheus_config.sh"]
