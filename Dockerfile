@@ -5,13 +5,9 @@ COPY common .
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o registerd cmd/registerd/registerd.go
 
-FROM registry.datacommand.co.kr/promemtheus:2.20.1
+FROM registry.datacommand.co.kr/prometheus:2.20.1
 
 MAINTAINER jeongcm
-
-ENV CDM_SERVICE_NAME=cdm-cloud-prometheus
-ENV CDM_SERIVCE_ADVERTISE_PORT=9090
-ENV CDM_SERVICE_VERSION=2.20.1
 
 ENV PROMETHEUS_HOST=prometheus
 ENV PROMETHEUS_PORT=9090
@@ -20,11 +16,10 @@ ENV NODE_EXPORTER_PORT=9100
 ENV CADVISOR_HOST=cadvisor
 ENV CADVISOR_PORT=8080
 
+ENV CDM_SERVICE_NAME=cdm-cloud-prometheus
+ENV CDM_SERVICE_ADVERTISE_PORT=9090
+
 COPY entrypoint.sh /bin/
 COPY --from=builder /build/registerd /bin/
 
 ENTRYPOINT ["/bin/sh","/bin/entrypoint.sh"]
-CMD        [ "--config.file=/config/prometheus.yml", \
-             "--storage.tsdb.path=/prometheus", \
-             "--web.console.libraries=/usr/share/prometheus/console_libraries", \
-             "--web.console.templates=/usr/share/prometheus/consoles" ]

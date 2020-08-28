@@ -4,7 +4,7 @@
 /bin/registerd &
 
 ###make prometheus.yml
-cat << EOF >> /config/prometheus.yml
+cat << EOF >> /prometheus/prometheus.yml
 # my global config
 global:
   scrape_interval:     15s # By default, scrape targets every 15 seconds.
@@ -29,7 +29,7 @@ scrape_configs:
     - names:
       - '$CADVISOR_HOST'
       type: 'A'
-      port: $CADVISOR_PROMETHEUS_PORT
+      port: $CADVISOR_PORT
 
   - job_name: 'node-exporter'
     scrape_interval: 5s
@@ -41,5 +41,6 @@ scrape_configs:
       port: $NODE_EXPORTER_PORT
 EOF
 
+
 ####start prometheus
-/bin/prometheus
+/bin/prometheus --config.file=/prometheus/prometheus.yml
