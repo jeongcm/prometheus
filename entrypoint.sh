@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###start registerd
-/bin/registerd
+/bin/registerd &
 
 ###make prometheus.yml
 cat << EOF >> /prometheus.yml
@@ -40,3 +40,6 @@ scrape_configs:
       type: 'A'
       port: $NODE_EXPORTER_PORT
 EOF
+
+####start prometheus
+/bin/prometheus
