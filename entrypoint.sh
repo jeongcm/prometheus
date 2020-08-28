@@ -4,7 +4,7 @@
 /bin/registerd &
 
 ###make prometheus.yml
-cat << EOF >> /prometheus.yml
+cat << EOF >> /config/prometheus.yml
 # my global config
 global:
   scrape_interval:     15s # By default, scrape targets every 15 seconds.

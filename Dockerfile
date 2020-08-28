@@ -24,7 +24,7 @@ COPY entrypoint.sh /bin/
 COPY --from=builder /build/registerd /bin/
 
 ENTRYPOINT ["/bin/sh","/bin/entrypoint.sh"]
-CMD        [ "--config.file=/prometheus.yml", \
+CMD        [ "--config.file=/config/prometheus.yml", \
              "--storage.tsdb.path=/prometheus", \
              "--web.console.libraries=/usr/share/prometheus/console_libraries", \
              "--web.console.templates=/usr/share/prometheus/consoles" ]
