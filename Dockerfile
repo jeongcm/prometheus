@@ -7,8 +7,6 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o registerd cmd/registerd/re
 
 FROM registry.datacommand.co.kr/prometheus:2.20.1
 
-MAINTAINER jeongcm
-
 ENV PROMETHEUS_HOST=prometheus
 ENV PROMETHEUS_PORT=9090
 ENV NODE_EXPORTER_HOST=node-exporter
