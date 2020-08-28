@@ -1,7 +1,9 @@
 #!/bin/bash
 
+###start registerd
 /bin/registerd
 
+###make prometheus.yml
 cat << EOF >> /prometheus.yml
 # my global config
 global:

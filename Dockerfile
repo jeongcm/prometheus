@@ -23,5 +23,4 @@ ENV CADVISOR_PORT=8080
 COPY entrypoints.sh /bin/
 COPY --from=builder /build/registerd /bin/
 
-CMD ["/bin/sh", "/bin/registerd"]
 CMD ["/bin/sh","/bin/entrypoints.sh"]
