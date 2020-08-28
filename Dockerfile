@@ -1,6 +1,7 @@
 FROM registry.datacommand.co.kr/golang:1.14 as builder
 
 WORKDIR /build
+
 COPY common .
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o registerd cmd/registerd/registerd.go

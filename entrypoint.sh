@@ -41,6 +41,5 @@ scrape_configs:
       port: $NODE_EXPORTER_PORT
 EOF
 
-
 ####start prometheus
 /bin/prometheus --config.file=/prometheus/prometheus.yml
