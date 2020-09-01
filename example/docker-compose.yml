@@ -1,9 +1,5 @@
 version: '3.7'
 
-volumes:
-  my_volume:
-    external: true
-
 networks:
   mynet:
     external: true
@@ -11,17 +7,8 @@ networks:
 services:
 
   prometheus:
-    image: registry.datacommand.co.kr/prometheus:v2.20.1
-    volumes:
-      - ./prometheus/:/etc/prometheus/
-      - my_volume:/prometheus:rw
+    image: registry.datacommand.co.kr/prometheus:HEAD
     ports:
       - 9090:9090
     networks:
       - mynet
-    deploy:
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == manager
