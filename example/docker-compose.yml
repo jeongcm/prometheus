@@ -17,8 +17,6 @@ services:
       - my_volume:/prometheus:rw
     ports:
       - 9090:9090
-    depends_on:
-      - cadvisor
     networks:
       - mynet
     deploy:
