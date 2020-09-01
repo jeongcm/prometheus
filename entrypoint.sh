@@ -4,7 +4,7 @@
 /bin/registerd &
 
 ###make prometheus.yml
-cat << EOF >> /prometheus/prometheus.yml
+cat << EOF > /prometheus/prometheus.yml
 # my global config
 global:
   scrape_interval:     15s # By default, scrape targets every 15 seconds.
@@ -42,4 +42,4 @@ scrape_configs:
 EOF
 
 ####start prometheus
-/bin/prometheus --config.file=/prometheus/prometheus.yml --storage.tsdb.path=/prometheus
+/bin/prometheus --config.file=/prometheus/prometheus.yml --storage.tsdb.path=/prometheus --web.console.libraries=/usr/share/prometheus/console_libraries --web.console.templates=/usr/share/prometheus/consoles
