@@ -1,0 +1,29 @@
+version: '3.7'
+
+volumes:
+  my_volume:
+    external: true
+
+networks:
+  mynet:
+    external: true
+
+services:
+
+  prometheus:
+    image: registry.datacommand.co.kr/prometheus:v2.20.1
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - my_volume:/prometheus:rw
+    ports:
+      - 9090:9090
+    depends_on:
+      - cadvisor
+    networks:
+      - mynet
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
