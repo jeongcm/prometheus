@@ -1,5 +1,9 @@
 version: '3.7'
 
+volumes:
+  my_volume:
+    external: true
+
 networks:
   mynet:
     external: true
@@ -8,6 +12,8 @@ services:
 
   prometheus:
     image: registry.datacommand.co.kr/prometheus:HEAD
+    volumes:
+      - my_volume:/prometheus:rw
     ports:
       - 9090:9090
     networks:

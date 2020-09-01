@@ -42,4 +42,4 @@ scrape_configs:
 EOF
 
 ####start prometheus
-/bin/prometheus --config.file=/prometheus/prometheus.yml
+/bin/prometheus --config.file=/prometheus/prometheus.yml --storage.tsdb.path=/prometheus
