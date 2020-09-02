@@ -19,6 +19,7 @@ ENV CDM_SERVICE_NAME=cdm-cloud-prometheus
 ENV CDM_SERVICE_ADVERTISE_PORT=9090
 
 COPY entrypoint.sh /bin/
+COPY make_config.sh /bin/
 COPY --from=builder /build/registerd /bin/
 
 ENTRYPOINT ["/bin/sh","/bin/entrypoint.sh"]
