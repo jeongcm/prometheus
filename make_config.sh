@@ -14,6 +14,7 @@ global:
 scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
+
     dns_sd_configs:
     - names:
       - '$PROMETHEUS_HOST'
@@ -22,6 +23,7 @@ scrape_configs:
 
   - job_name: 'cadvisor'
     scrape_interval: 5s
+
     dns_sd_configs:
     - names:
       - '$CADVISOR_HOST'
