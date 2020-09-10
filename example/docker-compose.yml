@@ -11,14 +11,14 @@ networks:
 services:
 
   prometheus:
-    image: registry.datacommand.co.kr/prometheus:<tag>
+    image: registry.datacommand.co.kr/cdm-cloud-prometheus:<tag>
     volumes:
       - my_volume:/prometheus
     networks:
       - mynet
 
   node-exporter:
-    image: registry.datacommand.co.kr/node-exporter:<tag>
+    image: registry.datacommand.co.kr/cdm-cloud-node-exporter:<tag>
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -34,7 +34,7 @@ services:
       mode: global
 
   cadvisor:
-    image: registry.datacommand.co.kr/cadvisor:<tag>
+    image: registry.datacommand.co.kr/cdm-cloud-cadvisor:<tag>
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
